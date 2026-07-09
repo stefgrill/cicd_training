@@ -24,7 +24,7 @@ pipeline {
                         label 'java'
                     }
                     steps {
-                        echo 'Starting to sleep in Hello World Stage'
+                        echolololol 'Starting to sleep in Hello World Stage'
                         sleep 15
                         input 'Continue with Hello World?'
                         echo 'Hello World from Agent 2'
@@ -40,7 +40,7 @@ pipeline {
             echo 'Pipeline Successfully Completed'
         }
         failure {
-            echo 'Pipeline failed'
+            echo 'Pipeline failed with my own mistakes'
         }
         always {
             echo 'Pipeline Completed from own Fork'
