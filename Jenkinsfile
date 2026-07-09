@@ -24,7 +24,7 @@ pipeline {
                         label 'java'
                     }
                     steps {
-                        echolololol 'Starting to sleep in Hello World Stage'
+                        echo 'Starting to sleep in Hello World Stage'
                         sleep 15
                         input 'Continue with Hello World?'
                         echo 'Hello World from Agent 2'
