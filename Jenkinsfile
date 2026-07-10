@@ -20,7 +20,7 @@ pipeline {
                         echo 'Starting to sleep in Setup Stage'
                         sleep 15
                         //Input step is used to pause the pipeline and wait for user input before proceeding.
-                        input 'Continue with Setup?'
+                      //  input 'Continue with Setup?'
                         echo 'Hello World from Agent 1'
                     }
                 }
@@ -31,9 +31,18 @@ pipeline {
                     steps {
                         echo 'Starting to sleep in Hello World Stage'
                         sleep 15
-                        input 'Continue with Hello World?'
+                       // input 'Continue with Hello World?'
                         sh 'cat /etc/os-release || uname -a'
                         echo 'Hello World from Agent 2'
+                    }
+                }
+                stage('Check Maven') {
+                    agent {
+                        label 'maven'
+                    }
+                    steps {
+                        echo 'Checking Maven availability on Maven agent'
+                        sh 'mvn -version'
                     }
                 }
             }
