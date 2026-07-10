@@ -52,6 +52,9 @@ pipeline {
         always {
             echo 'Pipeline Completed with own setup'
             echo "varAvailiableEverywhere: ${env.varAvailiableEverywhere}"
+            mail to: 'steffen.grill@vector.com',
+                subject: "Jenkins Pipeline ${currentBuild.currentResult}: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Die Pipeline ${env.JOB_NAME} mit Build #${env.BUILD_NUMBER} wurde mit dem Status ${currentBuild.currentResult} beendet."
         }
     }
     
