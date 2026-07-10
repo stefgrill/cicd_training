@@ -1,9 +1,30 @@
-import java.util.Scanner;
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 public class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("Hallo Welt ich bin automatisiert in einer Pipeline gebaut und hochgeladen");
-        System.out.println("Druecke Enter zum Beenden...");
-        new Scanner(System.in).nextLine();
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Hallo Welt");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setSize(360, 180);
+            frame.setLocationRelativeTo(null);
+
+            JLabel label = new JLabel("Hallo Welt", SwingConstants.CENTER);
+            JButton closeButton = new JButton("Beenden");
+            closeButton.addActionListener(e -> frame.dispose());
+
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.add(closeButton);
+
+            frame.add(label, BorderLayout.CENTER);
+            frame.add(buttonPanel, BorderLayout.SOUTH);
+            frame.setVisible(true);
+        });
     }
 }
