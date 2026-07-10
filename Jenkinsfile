@@ -61,9 +61,11 @@ pipeline {
             echo 'Pipeline failed with my own mistakes'
         }
         always {
-            echo 'Pipeline Completed with own setup'
-            echo "varAvailiableEverywhere: ${env.varAvailiableEverywhere}"
-            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true, allowEmptyArchive: true
+            node('maven') {
+                echo 'Pipeline Completed with own setup'
+                echo "varAvailiableEverywhere: ${env.varAvailiableEverywhere}"
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true, allowEmptyArchive: true
+            }
             
         }
     }
