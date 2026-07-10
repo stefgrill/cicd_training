@@ -32,6 +32,7 @@ pipeline {
                         echo 'Starting to sleep in Hello World Stage'
                         sleep 15
                         input 'Continue with Hello World?'
+                        sh 'cat /etc/os-release || uname -a'
                         echo 'Hello World from Agent 2'
                     }
                 }
