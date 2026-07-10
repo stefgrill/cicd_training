@@ -43,6 +43,8 @@ pipeline {
                     steps {
                         echo 'Checking Maven availability on Maven agent'
                         sh 'mvn -version'
+                        echo 'Building HelloWorld.java with Maven'
+                        sh 'mvn -B -ntp clean package'
                     }
                 }
             }
@@ -61,6 +63,7 @@ pipeline {
         always {
             echo 'Pipeline Completed with own setup'
             echo "varAvailiableEverywhere: ${env.varAvailiableEverywhere}"
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true, allowEmptyArchive: true
             
         }
     }
